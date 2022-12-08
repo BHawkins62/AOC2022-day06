@@ -13,20 +13,21 @@ end
 
 open("input.txt") do file
     count = 0
-    quad = ""
-    for readfirst in 1:4
+    marker = ""
+    ELEMENT = 4
+    for readfirst in 1:ELEMENT
         count += 1
-        quad *= read(file, Char)
+        marker *= read(file, Char)
     end
-    if unique_chars_in_string(quad, 4)
+    if unique_chars_in_string(marker, ELEMENT)
         print("characters processed for first marker: $count")
         exit
     else
         while !eof(file)
-            quad = quad[2:4]
-            quad *= read(file, Char)
+            marker = marker[2:ELEMENT]
+            marker *= read(file, Char)
             count += 1
-            if unique_chars_in_string(quad, 4)
+            if unique_chars_in_string(marker, ELEMENT)
                 print("characters processed for first start-of-packet marker: $count")
                 break
             end
@@ -41,19 +42,20 @@ end
 open("input.txt") do file
     count = 0
     marker = ""
-    for readfirst in 1:14
+    ELEMENT = 14
+    for readfirst in 1:ELEMENT
         count += 1
         marker *= read(file, Char)
     end
-    if unique_chars_in_string(marker, 14)
+    if unique_chars_in_string(marker, ELEMENT)
         print("characters processed for first marker: $count")
         exit
     else
         while !eof(file)
-            marker = marker[2:14]
+            marker = marker[2:ELEMENT]
             marker *= read(file, Char)
             count += 1
-            if unique_chars_in_string(marker, 14)
+            if unique_chars_in_string(marker, ELEMENT)
                 print("characters processed for first start-of-packet marker: $count")
                 break
             end
